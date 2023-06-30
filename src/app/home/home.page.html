@@ -1,20 +1,53 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header [translucent]="true" class="header-red">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title style="font-style: italic; font-weight: bold; color: black;">
+        NEWS FOR YOU
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-header collapse="condense" [translucent]="true" class="header-red">
+    <ion-toolbar>
+      <ion-title size="large" style="font-style: italic; font-weight: bold; color: black;">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-title style="margin-top: 20px; font-style: italic; font-weight: bold; color: black;">For You</ion-title>
+
+  <ion-list>
+    <ion-row style="background-color: yellow;" *ngFor="let article of topHeadlines">
+      <ion-col size="4">
+        <a [href]="article.url" target="_blank">
+          <img style="width: 300px; height: 100px; object-fit: cover; border-radius: 5px;"
+               [src]="article.urlToImage"
+               (error)="handleImageError(article.urlToImage)" />
+        </a>
+      </ion-col>
+
+      <ion-col size="8">
+        <ion-label>
+          <p style="font-weight: bold; color: black;">{{ article.author }}</p>
+          <p style="font-weight: bold; color: black; font-family: 'Arial Black', sans-serif;">{{ article.publishedAt | date }}</p>
+          <p style="font-weight: bold; color: black;">{{ article.title }}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-list>
 </ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
